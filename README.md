@@ -1,6 +1,32 @@
 # 有限集合上遞移關係數量的計數問題 (Transitive Relations Counting)
 > **Discrete Mathematics Project | From Naive to Bit-vector Optimization**
 
+[📄 點此閱讀完整研究報告 (PDF)](report_dm.pdf)
+
+這是關於 **OEIS A006905** 序列的計數實作。本專案探討如何透過程式邏輯，在元素數量為 $n$ 的集合中，計算所有符合「遞移律 (Transitivity)」的關係矩陣總數，並嘗試透過位元優化克服組合爆炸帶來的運算瓶頸。
+
+## 📖 研究動機
+在離散數學中，遞移律的定義為：若 $(a, b) \in R$ 且 $(b, c) \in R$，則 $(a, c) \in R$。
+雖然定義簡單，但實作計數時面臨極大的效能挑戰：
+
+1. **理論驗證**：產出數據並與 **OEIS A006905** 序列比對，確保演算法在數學上的正確性。
+2. **組合爆炸**：關係總數以 $2^{n^2}$ 指數級別成長。當 $n=6$ 時，搜尋空間高達 $2^{36} \approx 6.87 \times 10^{10}$ 種組合。
+3. **效能挑戰**：觀察當 $n=6$ 時，高達 **687 億次** 的運算量如何讓普通演算法崩潰，並嘗試優化它。
+
+## 🛠️ 演算法實作與優化
+
+### 1. 暴力法 (Naive Approach) - $O(n^3)$
+使用三層嵌套迴圈檢查所有的三元組 $(i, k, j)$。雖然邏輯直觀，但在面對大數據時效能極低：
+```c
+for (int i = 0; i < n; i++)
+    for (int k = 0; k < n; k++)
+        if (Matrix[i][k]) // 若 i -> k 存在
+            for (int j = 0; j < n; j++)
+                if (Matrix[k][j] && !Matrix[i][j]) return 0; // 若 k -> j 存在但 i -> j 不存在，則不符合
+
+# 有限集合上遞移關係數量的計數問題 (Transitive Relations Counting)
+> **Discrete Mathematics Project | From Naive to Bit-vector Optimization**
+
 ## 有限集合上遞移關係計數 (Transitive Relations)
 ### 從暴力法到位元並行優化 (From Naive to Bit-vector Optimization)
 
