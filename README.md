@@ -1,7 +1,7 @@
 # 有限集合上遞移關係數量的計數問題 (Transitive Relations Counting)
 > **Discrete Mathematics Project | From Naive to Bit-vector Optimization**
 
-[📄 點此閱讀完整研究報告 (PDF)](report_dm.pdf)
+[📄 點此閱讀完整研究報告 (PDF)](有限集合上遞移關係數量的計數問題 (Transitive Relations Counting).pdf)
 
 本專案探討如何透過程式邏輯，在元素數量為 $n$ 的集合中，計算所有符合「遞移律 (Transitivity)」的關係矩陣總數。我們實作了 **OEIS A006905** 序列的計數，並嘗試透過位元優化克服組合爆炸帶來的運算瓶頸。
 
