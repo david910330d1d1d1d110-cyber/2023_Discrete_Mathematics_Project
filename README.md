@@ -1,4 +1,4 @@
-# 有限集合上遞移關係數量的計數問題 (Transitive Relations Counting)
+# 遞移關係的數量求算及演算法優化
 > **Discrete Mathematics Project | From Naive to Bit-vector Optimization**
 
 [📄 點此閱讀完整研究報告 (PDF)](<有限集合上遞移關係數量的計數問題 (Transitive Relations Counting).pdf>)
